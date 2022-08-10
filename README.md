@@ -20,6 +20,7 @@ I presented QmdReport at the last RWorkflow workshop. I'd made a lot of progress
 * I worked out how to use child Rmds.
 * I put tables separate from figures.
 * I tried having appendices as a "part" using `appendices: ` in the `_quarto.yml` but when I added a cross-ref to a chapter it wouldn't build to Word. So had to get rid of that.
+* Only one chapter per qmd :( I posted as an issue https://github.com/quarto-dev/quarto-cli/issues/1712 This is a big problem. Often you don't know ahead of time how many chapters you need.
 
 ## Aug 5 22 update
 
