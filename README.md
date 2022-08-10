@@ -2,6 +2,14 @@
 
 [A demo a Quarto report live view](https://rverse-tutorials.github.io/QmdReport/)
 
+## Quarto quicks and problems
+
+* flextable cross-refs don't work in pdf but kableExtra tables work and look better in some ways. So I use kableExtra for pdf's.
+* flextable is by far best for Word but cross-refs are broken. The Quarto dev team knows about the problem.
+* The Quarto {{include filename}} option for including files is very limited. The file has to be in same folder as the qmd that calls it.
+* The Quarto {{include filename}} breaks if the thing you call is calling `knit_expand()`. Why? So weird.
+* No merge and knit option. :(
+
 ## Aug 6 22 update
 
 I presented QmdReport at the last RWorkflow workshop. I'd made a lot of progress but many things were not working still. I made a bunch of updates and cleaned things up.
