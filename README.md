@@ -6,11 +6,15 @@
 
 * flextable cross-refs don't work in pdf but kableExtra tables work and look better in some ways. So I use kableExtra for pdf's.
 * flextable is by far best for Word but cross-refs are broken. The Quarto dev team knows about the problem.
-* The Quarto {{include filename}} option for including files is very limited. The file has to be in same folder as the qmd that calls it.
-* The Quarto {{include filename}} breaks if the thing you call is calling `knit_expand()`. Why? So weird.
+* The Quarto {{include filename}} option for including files seems very limited or I don't know how to use it (most def true). The file has to be in same folder as the qmd that calls it.
+* The Quarto {{include filename}} breaks if the thing you call is calling `knit_expand()`. Why? So weird. I might be doing something wrong.
 * No merge and knit option. :( no sharing of variables across chapters
 * Can't have two chapters (h1 level) in a single qmd so can't dynamically create chapters (one qmd with many h1 levels where that qmd is created dynamically)
-* Wow, {gt} package and PDF table numbering don't mix! Breaks all numbering after a single `gt()` call.
+* {gt} package and PDF table numbering don't mix! Breaks all numbering after a single `gt()` call. *Update. I think this may be fixed in the new gt update*
+
+## Aug 11 22 update
+
+I presented a more minimal version to a NOAA Fisheries group: https://rverse-tutorials.github.io/QuartoReport_SE and https://github.com/RVerse-Tutorials/QuartoReport_SE
 
 ## Aug 6 22 update
 
