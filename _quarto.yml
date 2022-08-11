@@ -35,19 +35,7 @@ book:
   repo-url: https://github.com/RVerse-Tutorials/QmdReport
   repo-actions: [edit, source, issue]
   search: true
-  navbar:
-    title: "QmdReport"
-    right:
-      - icon: twitter
-        href: https://twitter.com/eeholm
-        aria-label: eeholm Twitter
-      - icon: github
-        href: https://github.com/RVerse-Tutorials/QmdReport
-        aria-label: QmdReport GitHub
-
-  twitter-card: 
-    site: "@eeholm"
-
+  downloads: [pdf, docx]
 
 bibliography: references.bib
 
