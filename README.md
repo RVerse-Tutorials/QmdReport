@@ -8,7 +8,9 @@
 * flextable is by far best for Word but cross-refs are broken. The Quarto dev team knows about the problem.
 * The Quarto {{include filename}} option for including files is very limited. The file has to be in same folder as the qmd that calls it.
 * The Quarto {{include filename}} breaks if the thing you call is calling `knit_expand()`. Why? So weird.
-* No merge and knit option. :(
+* No merge and knit option. :( no sharing of variables across chapters
+* Can't have two chapters (h1 level) in a single qmd so can't dynamically create chapters (one qmd with many h1 levels where that qmd is created dynamically)
+* Wow, {gt} package and PDF table numbering don't mix! Breaks all numbering after a single `gt()` call.
 
 ## Aug 6 22 update
 
