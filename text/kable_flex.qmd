@@ -12,16 +12,11 @@ source(here::here("tables", "_common.R"))
 Here I compare a three different ways to make tables.
 
 ```{r}
-tbl_cap <- "Donec bibendum pharetra arcu vitae porttitor. Morbi ac quam nunc. Ut cursus dolor a mauris aliquet vulputate. Morbi elementum ullamcorper augue, et tincidunt libero facilisis posuere. Nam congue velit non elit sollicitudin aliquet."
+tbl_cap <- "This should have a number."
 dt <- (mtcars[1:10,])
 f1 <- "Here is a footnote about this table"
 f2 <- "Here is a second footnote."
 ```
-
-
-## `kable`
-
-Here is the {kable} table @tbl-kable. {kabel} is part of {knitr} so definitely going to be supported by Quarto since Quarto uses the {knitr} engine. Cross-referencing works across HTML, PDF and Word but output to Word is not always great.
 
 ```{r}
 #| label: tbl-kable
@@ -37,14 +32,14 @@ kbl(dt, booktabs = TRUE) %>%
 
 ### `kable` quirks
 
-* Make sure to put `always_allow_html: true` in the yaml at the top of your Rmd or qmd file if outputting to Word. I can't figure out how to put it in the `
-* Word output is often not good looking. This is a known issue with `kable`
-* Do not pass in caption to `kbl()` if you want to use Quarto's cross-reference engine.
-* `kbl(..., format="pandoc")` can help for Word if your templates stop working but destroys the PDF output.
+-   Make sure to put `always_allow_html: true` in the yaml at the top of your Rmd or qmd file if outputting to Word. I can't figure out how to put it in the \`
+-   Word output is often not good looking. This is a known issue with `kable`
+-   Do not pass in caption to `kbl()` if you want to use Quarto's cross-reference engine.
+-   `kbl(..., format="pandoc")` can help for Word if your templates stop working but destroys the PDF output.
 
 ## `flextable`
 
-Here is the {flextable} table @tbl-flex.  {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.0.38 cross-reference and table captioning for Word and PDF is completely broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.
+Here is the {flextable} table @tbl-flex. {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.0.38 cross-reference and table captioning for Word and PDF is completely broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.
 
 ```{r}
 #| label: tbl-flex
@@ -64,33 +59,35 @@ dt %>%
 
 ### `flextable` quirks
 
-* Cross-refs broken in Word and PDF. Known issue.
+-   Cross-refs broken in Word and PDF. Known issue.
 
 ## `gt`
 
-Here is the {gt} table @tbl-gt. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it'll get more Quarto support in the long run.
-But like {kable}, the Word output is not so great, at least not by default. 
+Here is the {gt} table @tbl-gt. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it'll get more Quarto support in the long run. But like {kable}, the Word output is not so great, at least not by default.
 
-```{r}
+::: callout-warning
+I am not running the gt() code because it will break all subsequent table numbering in the PDF output. HTML is ok but not PDF. GH issue posted to quarto-dev.
+:::
+
+```{r eval=FALSE}
 #| label: tbl-gt
 #| tbl-cap: !expr paste("gt:", tbl_cap)
 #| echo: true
-library(gt)
 dt %>%
-  gt() %>%
-  tab_source_note(source_note = f1) %>%
-  tab_source_note(source_note = f2) %>%
-  tab_options(
-      table.font.size = px(18), 
+  gt::gt() %>%
+  gt::tab_source_note(source_note = f1) %>%
+  gt::tab_source_note(source_note = f2) %>%
+  gt::tab_options(
+      table.font.size = gt::px(18), 
       table.font.names = "Times New Roman",
-      data_row.padding = px(1))
+      data_row.padding = gt::px(1))
 ```
 
-### `qt` quirks
+### `gt` quirks
 
-* Table captions broken in PDF. Known issue. The "Table X." part is missing.
-* I couldn't get {gt} to respect my font request for HTML unlike for {flextable}
-
+-   Table captions broken in PDF. Known issue. The "Table X." part is missing.
+-   I couldn't get {gt} to respect my font request for HTML unlike for {flextable}
+-   A `gt()` call breaks all subsequent table numbering.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

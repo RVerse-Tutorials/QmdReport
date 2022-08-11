@@ -23,10 +23,8 @@ isword <- !ishtml & !ispdf
      That helps makes sure we all know what data were used. -->
 
 ```{r}
+# Set up
 nYr <- 2000:2010
-```
-
-```{r results='asis'}
 # So that I can later have many cvsfiles
 cvsfiles <- dir(here::here("data"), pattern = "\\.csv")
 cvsn <- 1
@@ -35,7 +33,9 @@ cvsfile.to.use <- cvsfiles[cvsn]
 datafil <- here::here("data", cvsfile.to.use)
 tmp <- read.csv(datafil, stringsAsFactors=FALSE)
 ntbl <- tmp %>% distinct(COMMON_POPULATION_NAME) %>% nrow()
+```
 
+```{r include=FALSE}
 out <- NULL
 for(table.num.to.print in 1:2){
   out = c(out, knit_expand(here::here('tables', 'Appendix_single_table.Rmd')))
