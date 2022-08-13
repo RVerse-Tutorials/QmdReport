@@ -14,6 +14,7 @@ The remaining big issues are
     - see https://rverse-tutorials.github.io/QmdReport/ and look at TOC
     - why doesn't the HTML figure out that the appendix A title is CRchum.csv?? Word and PDF figure that out.
 * When I have `appendices: `, the PDF TOC and levels look right, but if I click on "Appendices" in the TOC, I go to References.
+    - Look here to see what I mean [PDF version]( https://rverse-tutorials.github.io/QmdReport/A-Quarto-Template-Repo-to-Create-Big-Reports-and-Very-Long-Title-Because-Long-Titles-are-Common.pdf)
     - I would like to be able to have a `appendices.qmd` that I would go to. Maybe I can. I haven't tried.
 * No merge and knit option. :( so no memory across chapters. That is a "feature" in many cases but some report writers use memory across chapters heavily.
 
