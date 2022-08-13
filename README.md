@@ -7,8 +7,14 @@
 I have mostly figured out workarounds for the table package issues.
 
 The remaining big issues are
-* For HTML, if you have two chapters (h1 level) in a single qmd it totally messes up the TOC. 
-so can't dynamically create chapters (one qmd with many h1 levels where that qmd is created dynamically).
+* For HTML, if you have two chapters (h1 level) in a single qmd it totally messes up the TOC. Word and PDF converters seem to figure it out ok and number things correctly.
+    - I posted an issue https://github.com/quarto-dev/quarto-cli/issues/1712
+    - This is important because we often don't know how many appendix chapters we will need. These are dynamically created based on the data. There is no good way to know this ahead of time. These report templates are used across very different regions and each region has a different number of appendices based on the number of, say, species or cities or whatever, in the region.
+* When I have appendices so `appendices: ` in my YAML, the HTML TOC is messed up.
+    - see https://rverse-tutorials.github.io/QmdReport/ and look at TOC
+    - why doesn't the HTML figure out that the appendix A title is CRchum.csv?? Word and PDF figure that out.
+* When I have `appendices: `, the PDF TOC and levels look right, but if I click on "Appendices" in the TOC, I go to References.
+    - I would like to be able to have a `appendices.qmd` that I would go to. Maybe I can. I haven't tried.
 * No merge and knit option. :( so no memory across chapters. That is a "feature" in many cases but some report writers use memory across chapters heavily.
 
 
