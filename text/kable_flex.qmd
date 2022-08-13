@@ -66,10 +66,14 @@ dt %>%
 Here is the {gt} table @tbl-gt. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it'll get more Quarto support in the long run. But like {kable}, the Word output is not so great, at least not by default.
 
 ::: callout-warning
-I am not running the gt() code because it will break all subsequent table numbering in the PDF output. HTML is ok but not PDF. GH issue posted to quarto-dev.
+This code requires the dev version of {gt} > 0.6.0.9000. So you may need to install from GitHub.
+```
+library(remotes)
+install_github("rstudio/gt")
+```
 :::
 
-```{r eval=FALSE}
+```{r}
 #| label: tbl-gt
 #| tbl-cap: !expr paste("gt:", tbl_cap)
 #| echo: true
@@ -85,9 +89,8 @@ dt %>%
 
 ### `gt` quirks
 
--   Table captions broken in PDF. Known issue. The "Table X." part is missing.
 -   I couldn't get {gt} to respect my font request for HTML unlike for {flextable}
--   A `gt()` call breaks all subsequent table numbering.
+- The footnotes look bad in Word. But I don't know {gt} so probably my error.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

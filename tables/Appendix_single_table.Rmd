@@ -13,13 +13,13 @@ source(here::here("tables", "_common.R"))
 # Just to make debugging easier
 tbl <- {{table.num.to.print}}
 csvfile <- "{{cvsfile.to.use}}"
-datafil <- here::here("data", cvsfile.to.use)
+datafil <- here::here("data", csvfile)
 counts <- read.csv(datafil, stringsAsFactors=FALSE)
 modtime <- system(paste("git log -1 --format=%cd", datafil), intern=TRUE)
 ```
 
 ```{r results='asis'}
-if(tbl==1) cat("# Appendix", "{{app.letter}}", "{.unnumbered} \n\n")
+if(tbl==1) cat("# ", csvfile, "\n\n")
 ```
 <!-- A function I need for data wrangling. There are better ways to do this -->
 
@@ -77,6 +77,7 @@ tablecount <- function(data, cols="Spawners"){
       mykbl() %>%
       kableExtra::add_footnote(c(f1, f2), notation="none")
   }
+  tab
 }
 ```
 

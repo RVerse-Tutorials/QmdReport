@@ -7,7 +7,8 @@ library(dplyr)
 ishtml <- knitr::is_html_output()
 ispdf <- knitr::is_latex_output()
 isword <- !ishtml & !ispdf
-if(ishtml | isword) table.engine <- "flextable"
+if(ishtml) table.engine <- "kbl"
+if(isword) table.engine <- "flextable"
 if(ispdf) table.engine <- "kbl"
 
 myflextable <- function(x){

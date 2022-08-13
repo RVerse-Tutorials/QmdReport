@@ -2,15 +2,26 @@
 
 [A demo a Quarto report live view](https://rverse-tutorials.github.io/QmdReport/)
 
-## Quarto quicks and problems
+## Aug 13 22 update
+
+I have mostly figured out workarounds for the table package issues.
+
+The remaining big issues are
+* For HTML, if you have two chapters (h1 level) in a single qmd it totally messes up the TOC. 
+so can't dynamically create chapters (one qmd with many h1 levels where that qmd is created dynamically).
+* No merge and knit option. :( so no memory across chapters. That is a "feature" in many cases but some report writers use memory across chapters heavily.
+
+
+
+## Aug 11 22 update
 
 * flextable cross-refs don't work in pdf but kableExtra tables work and look better in some ways. So I use kableExtra for pdf's.
-* flextable is by far best for Word but cross-refs are broken. The Quarto dev team knows about the problem.
-* The Quarto {{include filename}} option for including files seems very limited or I don't know how to use it (most def true). The file has to be in same folder as the qmd that calls it.
+* flextable is best for Word but cross-refs are broken. The Quarto dev team knows about the problem.
+* The Quarto {{include filename}} option for including files seems very limited or I don't know how to use it (most definitely true). The file has to be in same folder as the qmd that calls it.
 * The Quarto {{include filename}} breaks if the thing you call is calling `knit_expand()`. Why? So weird. I might be doing something wrong.
 * No merge and knit option. :( no sharing of variables across chapters
 * Can't have two chapters (h1 level) in a single qmd so can't dynamically create chapters (one qmd with many h1 levels where that qmd is created dynamically)
-* {gt} package and PDF table numbering don't mix! Breaks all numbering after a single `gt()` call. *Update. I think this may be fixed in the new gt update*
+* {gt} package and PDF table numbering don't mix! Breaks all numbering after a single `gt()` call. *Update. Fixed in the new gt update*
 
 ## Aug 11 22 update
 

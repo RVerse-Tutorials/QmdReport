@@ -29,6 +29,7 @@ book:
     - text/figures.qmd
     - text/conclusion.qmd
     - references.qmd
+  appendices:
     - text/appendix_tables.qmd
 
   site-url: https://rverse-tutorials.github.io/QmdReport/

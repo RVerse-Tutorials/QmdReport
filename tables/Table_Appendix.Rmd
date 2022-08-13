@@ -27,18 +27,20 @@ isword <- !ishtml & !ispdf
 nYr <- 2000:2010
 # So that I can later have many cvsfiles
 cvsfiles <- dir(here::here("data"), pattern = "\\.csv")
-cvsn <- 1
+```
+
+```{r include=FALSE}
+out <- NULL
+for(cvsn in 1:2){
 app.letter <- LETTERS[cvsn]
 cvsfile.to.use <- cvsfiles[cvsn]
 datafil <- here::here("data", cvsfile.to.use)
 tmp <- read.csv(datafil, stringsAsFactors=FALSE)
 ntbl <- tmp %>% distinct(COMMON_POPULATION_NAME) %>% nrow()
-```
 
-```{r include=FALSE}
-out <- NULL
-for(table.num.to.print in 1:2){
+for(table.num.to.print in 1:min(ntbl,2)){
   out = c(out, knit_expand(here::here('tables', 'Appendix_single_table.Rmd')))
+}
 }
 ```
 `r paste(knit(text = out), collapse = '\n')`
