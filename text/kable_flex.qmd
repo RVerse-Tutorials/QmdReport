@@ -9,14 +9,18 @@ source(here::here("tables", "_common.R"))
 
 # Kable vs Flex vs qt {#sec-kableflexgt}
 
-Here I compare a three different ways to make tables.
+Here I compare a three different ways to make tables. Unfortunately the table numbers and cross-references are still not working as of Quarto version 1.2.335 (Feb 2023), but the developers are aware and a major revamp of cross-referencing is in the works to fix these problems.
 
 ```{r}
-tbl_cap <- "This should have a number."
+tbl_cap <- "This should have a number that follows the other tables."
 dt <- (mtcars[1:10,])
 f1 <- "Here is a footnote about this table"
 f2 <- "Here is a second footnote."
 ```
+
+## Kable
+
+Here is the {kable} table @tbl-kable. Word output is often not good looking. This is a known issue with `kable`.
 
 ```{r}
 #| label: tbl-kable
@@ -39,7 +43,7 @@ kbl(dt, booktabs = TRUE) %>%
 
 ## `flextable`
 
-Here is the {flextable} table @tbl-flex. {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.0.38 cross-reference and table captioning for Word and PDF is completely broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.
+Here is the {flextable} table @tbl-flex. {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.2.335 cross-reference and table numbers for Word  is broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.
 
 ```{r}
 #| label: tbl-flex
@@ -59,19 +63,12 @@ dt %>%
 
 ### `flextable` quirks
 
--   Cross-refs broken in Word and PDF. Known issue.
+-   Table numbers and cross-refs broken in Word. Known issue.
 
 ## `gt`
 
-Here is the {gt} table @tbl-gt. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it'll get more Quarto support in the long run. But like {kable}, the Word output is not so great, at least not by default.
+Here is the {gt} table @tbl-gt. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it'll get more Quarto support in the long run. But like {kable}, the Word output is not good. In addition, currently table captions are broken in Quarto Word output.
 
-::: callout-warning
-This code requires the dev version of {gt} > 0.6.0.9000. So you may need to install from GitHub.
-```
-library(remotes)
-install_github("rstudio/gt")
-```
-:::
 
 ```{r}
 #| label: tbl-gt
@@ -89,8 +86,9 @@ dt %>%
 
 ### `gt` quirks
 
--   I couldn't get {gt} to respect my font request for HTML unlike for {flextable}
+- I couldn't get {gt} to respect my font request for HTML unlike for {flextable}
 - The footnotes look bad in Word. But I don't know {gt} so probably my error.
+- Table captions and numbers broken in Word.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

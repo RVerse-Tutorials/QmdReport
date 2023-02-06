@@ -22,8 +22,9 @@ source(here::here("tables", "_common.R"))
 
 ```{r}
   data(tli)
+  library(flextable)
   fm3 <- glm(disadvg ~ ethnicty*grade, data = tli, family = binomial)
-  ft <- xtable_to_flextable(xtable(anova(fm3)), hline.after = c(1))
+  ft <- as_flextable(xtable(anova(fm3)), hline.after = c(1))
   ft <- ft %>%
     font(fontname="Times New Roman", part="all") %>%
     fontsize(size=12)

@@ -1,0 +1,112 @@
+```{r warning=FALSE, echo=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, message=FALSE)
+library(knitr)
+library(xtable)
+library(flextable)
+library(dplyr)
+```
+
+# Citations
+
+![](https://g.gravizo.com/svg?%0A%20%20digraph%20G%20%7B%0A%20%20%20%20aize%20%253d%224%252c4%22%253b%0A%20%20%20%20node%20%5Bshape%253dbox%5D%253b%0A%0A%20%20%20%20zotero%20-%3E%20pandoc_citeproc%20%5Blabel%253d%22CSL%22%5D%253b%0A%20%20%20%20zotero%20-%3E%20pandoc_citeproc_convert%20%5Blabel%253d%22bibtex%22%5D%253b%0A%20%20%20%20pandoc_citeproc_convert%20-%3E%20pandoc_citeproc%20%5Blabel%253d%22CSL%22%5D%253b%0A%0A%20%20%20%20pandoc_citeproc_convert%20%5Blabel%253d%22pandoc-citeproc%20in%20convert%20mode%22%5D%253b%0A%20%20%20%20pandoc_citeproc%20%5Blabel%253d%22pandoc-citeproc%22%5D%253b%0A%20%20%7D%0A)
+
+Tips and tricks! Or things they never told you...
+
+Zotero users, you are better off avoiding the intermediary bibtex file altogether. Read how [here](https://retorque.re/zotero-better-bibtex/exporting/pandoc/)
+
+## The basics
+
+### The `bib` file
+
+Include a reference file called `whatever.bib` in your project. This holds your references in a flat format called bibtex (or biblatex). [Read about bib files in the bookdown doc](https://bookdown.org/yihui/bookdown/citations.html) but ignore the parts about how to include citations.
+
+How do I make this file from a list of references? If you use Zotero, do File \> Export \> BibTex or BibLaTeX.
+
+In your Quarto yaml, include this as
+
+    bibliography: [whatever.bib]
+
+If you have multiple `bib` files, separate them with commas.
+
+### Citing
+
+In your text you cite, like so `[@smith2020]` to produce (Smith 2022) and `@smith2022` to produce Smith (2020).
+
+## What Pandoc does
+
+Pandoc processes your .bib file into inline references and references at the end of your document using biblatex by default. biblatex is a LaTeX package. Alternatively you can force Pandoc to use bibtex by using the file ending `.bibtex`. Then Pandoc formats your citations using the csl file you specified (or the default one). [Read about this](https://pandoc.org/MANUAL.html#citations)
+
+## bibtex versus biblatex
+
+Why does this matter? The syntax for the `.bib` file is slightly different for biblatex versus bibtex. Your csl file (which specifies how your citations look) may be for bibtex or biblatex. The csl file may or may not tell you this.
+
+One big difference is how bibtex versus biblatex process the institution or publisher variable in the bib file. biblatex treats this as a list and uses `and` as a delimiter between the items in the list. bibtex does not do this.
+
+    institution: U.S. Fish and Wildlife Service
+
+bibtex makes this "U.S. Fish and Wildlife Service" while biblatex turns this into "U.S. Fish; Wildlife Service". To stop this behavior you need to write your institution (or publisher) as
+
+    institution: U.S. Fish {and} Wildlife Service
+
+Unfortunately Zortoro won't let you export raw `{`. It will escape these and make them `\{` which will appear as curly brackets in the citation.
+
+Another difference between bibtex and biblatex is that they use different variable names. biblatex uses for example phdthesis as a type while bibtex has only thesis. biblatex is back compatible with bibtex but bibtex is not forward compatible with biblatex.
+
+Meaning, you can use a `.bib` file in bibtex format with biblatex. But don't rename a biblatex file to `.bibtex` which would force Pandoc to use bibtex and you citations would break.
+
+## Customizing how your citations look
+
+You use a csl file for this. [Quarto documentation section](https://quarto.org/docs/authoring/footnotes-and-citations.html#citation-style). You download the one you need and then add a reference to it in your yaml. Go to Zotero's csl library and you can see the output formats and find the one you want: [Zotero csl library](https://www.zotero.org/styles).
+
+Once you have downloaded a csl file, you add it you your yaml like so
+
+    bibliography: [whatever.bib]
+    csl: cslyoudownloaded.csl
+
+**Editing your csl file**
+
+Sometimes you need to alter the csl file a bit. Journal article and book formats are standardized, but report and tech report formats are really a mixed bag. Your institution or the publisher you are targeting may well use some customized format for reports in citations.
+
+So now you are faced with editing a csl file. This is pretty technical so brace yourself. [This Zotero article](https://www.zotero.org/support/dev/citation_styles/csl_0.8.1_syntax) will give you an overview.
+
+As you tackle keep in mind that a `.bib` (and `.bibtex`) file was written to be used with a `.bst` file. That is what is used by LaTeX. Pandoc is doing some 'cross-walking' to allow that `.bib` file to be used with a csl file that has slightly different names for things.
+
+## Tips
+
+### italics
+
+Let's same you have a species name in a title and you want that in italics. In your `.bib` file you'll have
+
+    title = {The title and \textit{the species}}
+
+The `\textit` is TeX.
+
+If you are using Zotero, then enter your title as
+
+    The title and <i>the species</i>
+
+and when you export it will convert to `\textit{}`.
+
+### Words you want capitalized
+
+By default, your titles will get converted to sentence form. The keep capitalized form, you use curly brackets.
+
+    The title is {ABC}
+
+If you are using Zotero, then enter your title as
+
+    The title is ABC
+
+Note in Zotero you should always enter the title in sentence form (no capitalization). If you capitalize words then Zotero will assume you want them that way. So this in Zotero
+
+    The Title is Now
+
+will become
+
+    The {Title} is {Now}
+
+in your exported `.bib` file. The curly brackets protect the capitalization and force it to remain capitalized in your citation list. If you have these extraneous curly brackets in your exported bib file, then you should correct the problem in Zotero.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```

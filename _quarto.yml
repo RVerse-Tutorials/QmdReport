@@ -1,7 +1,6 @@
 project:
   type: book
   output-dir: docs
-  output-file: "QmdReport"
 
 book:
   title: A Quarto Template Repo to Create Big Reports and Very Long Title Because Long Titles are Common
@@ -58,10 +57,13 @@ format:
     documentclass: scrbook
     classoption: ["oneside"]
     template-partials: ["partials/before-body.tex"]
+    keep-tex: true
     toc: true
     lof: true
     lot: true
     include-in-header: 
       - partials/inheader.tex
+    geometry: 
+      - a4paper
 
 

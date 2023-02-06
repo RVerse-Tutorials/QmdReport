@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.0.38">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -121,8 +126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link href="../site_libs/tabwid-1.0.0/tabwid.css" rel="stylesheet">
-<link href="../site_libs/tabwid-1.0.0/scrool.css" rel="stylesheet">
+<link href="../site_libs/tabwid-1.1.2/tabwid.css" rel="stylesheet">
 
 
 </head>
@@ -240,18 +244,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#kable-quirks" id="toc-kable-quirks" class="nav-link active" data-scroll-target="#kable-quirks"> <span class="header-section-number">5.0.1</span> <code>kable</code> quirks</a></li>
-  <li><a href="#flextable" id="toc-flextable" class="nav-link" data-scroll-target="#flextable"> <span class="header-section-number">5.1</span> <code>flextable</code></a>
+  <li><a href="#kable" id="toc-kable" class="nav-link active" data-scroll-target="#kable"><span class="toc-section-number">5.1</span>  Kable</a>
   <ul class="collapse">
-  <li><a href="#flextable-quirks" id="toc-flextable-quirks" class="nav-link" data-scroll-target="#flextable-quirks"> <span class="header-section-number">5.1.1</span> <code>flextable</code> quirks</a></li>
+  <li><a href="#kable-quirks" id="toc-kable-quirks" class="nav-link" data-scroll-target="#kable-quirks"><span class="toc-section-number">5.1.1</span>  <code>kable</code> quirks</a></li>
   </ul></li>
-  <li><a href="#gt" id="toc-gt" class="nav-link" data-scroll-target="#gt"> <span class="header-section-number">5.2</span> <code>gt</code></a>
+  <li><a href="#flextable" id="toc-flextable" class="nav-link" data-scroll-target="#flextable"><span class="toc-section-number">5.2</span>  <code>flextable</code></a>
   <ul class="collapse">
-  <li><a href="#gt-quirks" id="toc-gt-quirks" class="nav-link" data-scroll-target="#gt-quirks"> <span class="header-section-number">5.2.1</span> <code>gt</code> quirks</a></li>
+  <li><a href="#flextable-quirks" id="toc-flextable-quirks" class="nav-link" data-scroll-target="#flextable-quirks"><span class="toc-section-number">5.2.1</span>  <code>flextable</code> quirks</a></li>
+  </ul></li>
+  <li><a href="#gt" id="toc-gt" class="nav-link" data-scroll-target="#gt"><span class="toc-section-number">5.3</span>  <code>gt</code></a>
+  <ul class="collapse">
+  <li><a href="#gt-quirks" id="toc-gt-quirks" class="nav-link" data-scroll-target="#gt-quirks"><span class="toc-section-number">5.3.1</span>  <code>gt</code> quirks</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/RVerse-Tutorials/QmdReport/edit/main/text/kable_flex.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/RVerse-Tutorials/QmdReport/blob/main/text/kable_flex.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/RVerse-Tutorials/QmdReport/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -269,6 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -278,10 +286,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 
 </div>
-<p>Here I compare a three different ways to make tables.</p>
+<p>Here I compare a three different ways to make tables. Unfortunately the table numbers and cross-references are still not working as of Quarto version 1.2.335 (Feb 2023), but the developers are aware and a major revamp of cross-referencing is in the works to fix these problems.</p>
 <div class="cell">
 
 </div>
+<section id="kable" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="kable"><span class="header-section-number">5.1</span> Kable</h2>
+<p>Here is the {kable} table <a href="#tbl-kable">Table&nbsp;<span>5.1</span></a>. Word output is often not good looking. This is a known issue with <code>kable</code>.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -295,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div id="tbl-kable" class="anchored">
 
-<table class="table" style="margin-left: auto; margin-right: auto;border-bottom: 0;"><caption>Table 5.1:  kable: This should have a number. </caption>
+<table class="table" style="margin-left: auto; margin-right: auto;border-bottom: 0;"><caption>Table&nbsp;5.1:  kable: This should have a number that follows the other tables. </caption>
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -465,8 +476,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<section id="kable-quirks" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="kable-quirks"><span class="header-section-number">5.0.1</span> <code>kable</code> quirks</h3>
+<section id="kable-quirks" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="kable-quirks"><span class="header-section-number">5.1.1</span> <code>kable</code> quirks</h3>
 <ul>
 <li>Make sure to put <code>always_allow_html: true</code> in the yaml at the top of your Rmd or qmd file if outputting to Word. I can’t figure out how to put it in the `</li>
 <li>Word output is often not good looking. This is a known issue with <code>kable</code></li>
@@ -474,9 +485,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>kbl(..., format="pandoc")</code> can help for Word if your templates stop working but destroys the PDF output.</li>
 </ul>
 </section>
-<section id="flextable" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="flextable"><span class="header-section-number">5.1</span> <code>flextable</code></h2>
-<p>Here is the {flextable} table <a href="#tbl-flex">Table&nbsp;<span>5.2</span></a>. {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.0.38 cross-reference and table captioning for Word and PDF is completely broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.</p>
+</section>
+<section id="flextable" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="flextable"><span class="header-section-number">5.2</span> <code>flextable</code></h2>
+<p>Here is the {flextable} table <a href="#tbl-flex">Table&nbsp;<span>5.2</span></a>. {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.2.335 cross-reference and table numbers for Word is broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
@@ -494,57 +506,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div id="tbl-flex" class="anchored">
 
-<div class="tabwid"><style>.cl-d98372c2{}.cl-d97c88cc{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d97c88f4{font-family:'Times New Roman';font-size:6.6pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;position: relative;bottom:3.3pt;}.cl-d97c88f5{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d97c9a06{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d97c9a10{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d97ce150{width:48.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce15a{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce15b{width:31.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce15c{width:34pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce164{width:38.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce165{width:42.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce166{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce16e{width:35.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce16f{width:38.9pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce178{width:48.1pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce179{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce17a{width:35.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce182{width:31.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce183{width:42.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce184{width:34pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce185{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce18c{width:38.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce18d{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce196{width:48.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce197{width:31.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce198{width:34pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1a0{width:35.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1a1{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1a2{width:42.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1aa{width:48.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1ab{width:34pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1b4{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1b5{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1be{width:35.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1bf{width:38.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1c0{width:31.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1c8{width:42.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1c9{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1ca{width:48.1pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1d2{width:38.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1d3{width:34pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1d4{width:31.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1dc{width:42.5pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1dd{width:35.8pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1e6{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1e7{width:48.1pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1e8{width:35.8pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1f0{width:31.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1f1{width:38.9pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1f2{width:34pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1f3{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1fa{width:41.9pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d97ce1fb{width:42.5pt;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class="cl-d98372c2"><caption>Table 5.2:  flextable: This should have a number. </caption>
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-d97ce1fa"><p class="cl-d97c9a06"><span class="cl-d97c88cc">mpg</span><span class="cl-d97c88f4">a</span></p></td><td class="cl-d97ce1f2"><p class="cl-d97c9a06"><span class="cl-d97c88cc">cyl</span><span class="cl-d97c88f4">b</span></p></td><td class="cl-d97ce1e7"><p class="cl-d97c9a06"><span class="cl-d97c88cc">disp</span></p></td><td class="cl-d97ce1f1"><p class="cl-d97c9a06"><span class="cl-d97c88cc">hp</span></p></td><td class="cl-d97ce1fa"><p class="cl-d97c9a06"><span class="cl-d97c88cc">drat</span></p></td><td class="cl-d97ce1e7"><p class="cl-d97c9a06"><span class="cl-d97c88cc">wt</span></p></td><td class="cl-d97ce1e7"><p class="cl-d97c9a06"><span class="cl-d97c88cc">qsec</span></p></td><td class="cl-d97ce1f0"><p class="cl-d97c9a06"><span class="cl-d97c88cc">vs</span></p></td><td class="cl-d97ce1e8"><p class="cl-d97c9a06"><span class="cl-d97c88cc">am</span></p></td><td class="cl-d97ce1fb"><p class="cl-d97c9a06"><span class="cl-d97c88cc">gear</span></p></td><td class="cl-d97ce1f3"><p class="cl-d97c9a06"><span class="cl-d97c88cc">carb</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d97ce15a"><p class="cl-d97c9a06"><span class="cl-d97c88f5">21.0</span></p></td><td class="cl-d97ce15c"><p class="cl-d97c9a06"><span class="cl-d97c88f5">6</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">160.0</span></p></td><td class="cl-d97ce164"><p class="cl-d97c9a06"><span class="cl-d97c88f5">110</span></p></td><td class="cl-d97ce15a"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.90</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">2.620</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">16.46</span></p></td><td class="cl-d97ce15b"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce16e"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td><td class="cl-d97ce165"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td><td class="cl-d97ce166"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d97ce18d"><p class="cl-d97c9a06"><span class="cl-d97c88f5">21.0</span></p></td><td class="cl-d97ce198"><p class="cl-d97c9a06"><span class="cl-d97c88f5">6</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">160.0</span></p></td><td class="cl-d97ce18c"><p class="cl-d97c9a06"><span class="cl-d97c88f5">110</span></p></td><td class="cl-d97ce18d"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.90</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">2.875</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">17.02</span></p></td><td class="cl-d97ce197"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce1a0"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td><td class="cl-d97ce1a2"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td><td class="cl-d97ce1a1"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d97ce1b4"><p class="cl-d97c9a06"><span class="cl-d97c88f5">22.8</span></p></td><td class="cl-d97ce1ab"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td><td class="cl-d97ce1aa"><p class="cl-d97c9a06"><span class="cl-d97c88f5">108.0</span></p></td><td class="cl-d97ce1bf"><p class="cl-d97c9a06"><span class="cl-d97c88f5">93</span></p></td><td class="cl-d97ce1b4"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.85</span></p></td><td class="cl-d97ce1aa"><p class="cl-d97c9a06"><span class="cl-d97c88f5">2.320</span></p></td><td class="cl-d97ce1aa"><p class="cl-d97c9a06"><span class="cl-d97c88f5">18.61</span></p></td><td class="cl-d97ce1c0"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td><td class="cl-d97ce1be"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td><td class="cl-d97ce1c8"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td><td class="cl-d97ce1b5"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d97ce18d"><p class="cl-d97c9a06"><span class="cl-d97c88f5">21.4</span></p></td><td class="cl-d97ce198"><p class="cl-d97c9a06"><span class="cl-d97c88f5">6</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">258.0</span></p></td><td class="cl-d97ce18c"><p class="cl-d97c9a06"><span class="cl-d97c88f5">110</span></p></td><td class="cl-d97ce18d"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.08</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.215</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">19.44</span></p></td><td class="cl-d97ce197"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td><td class="cl-d97ce1a0"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce1a2"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3</span></p></td><td class="cl-d97ce1a1"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d97ce15a"><p class="cl-d97c9a06"><span class="cl-d97c88f5">18.7</span></p></td><td class="cl-d97ce15c"><p class="cl-d97c9a06"><span class="cl-d97c88f5">8</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">360.0</span></p></td><td class="cl-d97ce164"><p class="cl-d97c9a06"><span class="cl-d97c88f5">175</span></p></td><td class="cl-d97ce15a"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.15</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.440</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">17.02</span></p></td><td class="cl-d97ce15b"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce16e"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce165"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3</span></p></td><td class="cl-d97ce166"><p class="cl-d97c9a06"><span class="cl-d97c88f5">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d97ce15a"><p class="cl-d97c9a06"><span class="cl-d97c88f5">18.1</span></p></td><td class="cl-d97ce15c"><p class="cl-d97c9a06"><span class="cl-d97c88f5">6</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">225.0</span></p></td><td class="cl-d97ce164"><p class="cl-d97c9a06"><span class="cl-d97c88f5">105</span></p></td><td class="cl-d97ce15a"><p class="cl-d97c9a06"><span class="cl-d97c88f5">2.76</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.460</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">20.22</span></p></td><td class="cl-d97ce15b"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td><td class="cl-d97ce16e"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce165"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3</span></p></td><td class="cl-d97ce166"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d97ce15a"><p class="cl-d97c9a06"><span class="cl-d97c88f5">14.3</span></p></td><td class="cl-d97ce15c"><p class="cl-d97c9a06"><span class="cl-d97c88f5">8</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">360.0</span></p></td><td class="cl-d97ce164"><p class="cl-d97c9a06"><span class="cl-d97c88f5">245</span></p></td><td class="cl-d97ce15a"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.21</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.570</span></p></td><td class="cl-d97ce150"><p class="cl-d97c9a06"><span class="cl-d97c88f5">15.84</span></p></td><td class="cl-d97ce15b"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce16e"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce165"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3</span></p></td><td class="cl-d97ce166"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d97ce18d"><p class="cl-d97c9a06"><span class="cl-d97c88f5">24.4</span></p></td><td class="cl-d97ce198"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">146.7</span></p></td><td class="cl-d97ce18c"><p class="cl-d97c9a06"><span class="cl-d97c88f5">62</span></p></td><td class="cl-d97ce18d"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.69</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.190</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">20.00</span></p></td><td class="cl-d97ce197"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td><td class="cl-d97ce1a0"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce1a2"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td><td class="cl-d97ce1a1"><p class="cl-d97c9a06"><span class="cl-d97c88f5">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d97ce18d"><p class="cl-d97c9a06"><span class="cl-d97c88f5">22.8</span></p></td><td class="cl-d97ce198"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">140.8</span></p></td><td class="cl-d97ce18c"><p class="cl-d97c9a06"><span class="cl-d97c88f5">95</span></p></td><td class="cl-d97ce18d"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.92</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.150</span></p></td><td class="cl-d97ce196"><p class="cl-d97c9a06"><span class="cl-d97c88f5">22.90</span></p></td><td class="cl-d97ce197"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td><td class="cl-d97ce1a0"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce1a2"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td><td class="cl-d97ce1a1"><p class="cl-d97c9a06"><span class="cl-d97c88f5">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d97ce179"><p class="cl-d97c9a06"><span class="cl-d97c88f5">19.2</span></p></td><td class="cl-d97ce184"><p class="cl-d97c9a06"><span class="cl-d97c88f5">6</span></p></td><td class="cl-d97ce178"><p class="cl-d97c9a06"><span class="cl-d97c88f5">167.6</span></p></td><td class="cl-d97ce16f"><p class="cl-d97c9a06"><span class="cl-d97c88f5">123</span></p></td><td class="cl-d97ce179"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.92</span></p></td><td class="cl-d97ce178"><p class="cl-d97c9a06"><span class="cl-d97c88f5">3.440</span></p></td><td class="cl-d97ce178"><p class="cl-d97c9a06"><span class="cl-d97c88f5">18.30</span></p></td><td class="cl-d97ce182"><p class="cl-d97c9a06"><span class="cl-d97c88f5">1</span></p></td><td class="cl-d97ce17a"><p class="cl-d97c9a06"><span class="cl-d97c88f5">0</span></p></td><td class="cl-d97ce183"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td><td class="cl-d97ce185"><p class="cl-d97c9a06"><span class="cl-d97c88f5">4</span></p></td></tr></tbody><tfoot><tr style="overflow-wrap:break-word;"><td colspan="11" class="cl-d97ce1e6"><p class="cl-d97c9a10"><span class="cl-d97c88f4">a</span><span class="cl-d97c88cc">Here is a footnote about this table</span></p></td></tr><tr style="overflow-wrap:break-word;"><td colspan="11" class="cl-d97ce1e6"><p class="cl-d97c9a10"><span class="cl-d97c88f4">b</span><span class="cl-d97c88cc">Here is a second footnote.</span></p></td></tr></tfoot></table></div>
+<div class="tabwid"><style>.cl-736beae8{}.cl-7367aef6{font-family:'Times New Roman';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-7367af00{font-family:'Times New Roman';font-size:6.6pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;position: relative;bottom:3.3pt;}.cl-7367af0a{font-family:'Times New Roman';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-736938b6{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-736938b7{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-73694388{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-73694389{width:0.472in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-73694392{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-73694393{width:0.54in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-73694394{width:0.438in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7369439c{width:0.497in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7369439d{width:0.591in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-7369439e{width:0.582in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 2pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943a6{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943a7{width:0.472in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943a8{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943a9{width:0.54in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943aa{width:0.438in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943b0{width:0.497in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943b1{width:0.591in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943b2{width:0.582in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943b3{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943b4{width:0.472in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943ba{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943bb{width:0.54in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943bc{width:0.438in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943bd{width:0.497in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943be{width:0.591in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943c4{width:0.582in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943c5{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943c6{width:0.472in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943ce{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943cf{width:0.54in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943d0{width:0.438in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943d1{width:0.497in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943d8{width:0.591in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943d9{width:0.582in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943da{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943db{width:0.472in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943dc{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943e2{width:0.54in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943e3{width:0.438in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943e4{width:0.497in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943e5{width:0.591in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943e6{width:0.582in;background-color:transparent;vertical-align: middle;border-bottom: 2pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943ec{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943ed{width:0.472in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943ee{width:0.668in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943ef{width:0.54in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943f6{width:0.438in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943f7{width:0.497in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943f8{width:0.591in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-736943f9{width:0.582in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(255, 255, 255, 0.00);border-top: 0 solid rgba(255, 255, 255, 0.00);border-left: 0 solid rgba(255, 255, 255, 0.00);border-right: 0 solid rgba(255, 255, 255, 0.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-736beae8"><caption>Table&nbsp;5.2:  flextable: This should have a number that follows the other tables. </caption><thead><tr style="overflow-wrap:break-word;"><th class="cl-73694388"><p class="cl-736938b6"><span class="cl-7367aef6">mpg</span><span class="cl-7367af00">a</span></p></th><th class="cl-73694389"><p class="cl-736938b6"><span class="cl-7367aef6">cyl</span><span class="cl-7367af00">b</span></p></th><th class="cl-73694392"><p class="cl-736938b6"><span class="cl-7367aef6">disp</span></p></th><th class="cl-73694393"><p class="cl-736938b6"><span class="cl-7367aef6">hp</span></p></th><th class="cl-73694388"><p class="cl-736938b6"><span class="cl-7367aef6">drat</span></p></th><th class="cl-73694392"><p class="cl-736938b6"><span class="cl-7367aef6">wt</span></p></th><th class="cl-73694392"><p class="cl-736938b6"><span class="cl-7367aef6">qsec</span></p></th><th class="cl-73694394"><p class="cl-736938b6"><span class="cl-7367aef6">vs</span></p></th><th class="cl-7369439c"><p class="cl-736938b6"><span class="cl-7367aef6">am</span></p></th><th class="cl-7369439d"><p class="cl-736938b6"><span class="cl-7367aef6">gear</span></p></th><th class="cl-7369439e"><p class="cl-736938b6"><span class="cl-7367aef6">carb</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-736943a6"><p class="cl-736938b6"><span class="cl-7367af0a">21.0</span></p></td><td class="cl-736943a7"><p class="cl-736938b6"><span class="cl-7367af0a">6</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">160.0</span></p></td><td class="cl-736943a9"><p class="cl-736938b6"><span class="cl-7367af0a">110</span></p></td><td class="cl-736943a6"><p class="cl-736938b6"><span class="cl-7367af0a">3.90</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">2.620</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">16.46</span></p></td><td class="cl-736943aa"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943b0"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td><td class="cl-736943b1"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td><td class="cl-736943b2"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-736943b3"><p class="cl-736938b6"><span class="cl-7367af0a">21.0</span></p></td><td class="cl-736943b4"><p class="cl-736938b6"><span class="cl-7367af0a">6</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">160.0</span></p></td><td class="cl-736943bb"><p class="cl-736938b6"><span class="cl-7367af0a">110</span></p></td><td class="cl-736943b3"><p class="cl-736938b6"><span class="cl-7367af0a">3.90</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">2.875</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">17.02</span></p></td><td class="cl-736943bc"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943bd"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td><td class="cl-736943be"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td><td class="cl-736943c4"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-736943c5"><p class="cl-736938b6"><span class="cl-7367af0a">22.8</span></p></td><td class="cl-736943c6"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td><td class="cl-736943ce"><p class="cl-736938b6"><span class="cl-7367af0a">108.0</span></p></td><td class="cl-736943cf"><p class="cl-736938b6"><span class="cl-7367af0a">93</span></p></td><td class="cl-736943c5"><p class="cl-736938b6"><span class="cl-7367af0a">3.85</span></p></td><td class="cl-736943ce"><p class="cl-736938b6"><span class="cl-7367af0a">2.320</span></p></td><td class="cl-736943ce"><p class="cl-736938b6"><span class="cl-7367af0a">18.61</span></p></td><td class="cl-736943d0"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td><td class="cl-736943d1"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td><td class="cl-736943d8"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td><td class="cl-736943d9"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-736943b3"><p class="cl-736938b6"><span class="cl-7367af0a">21.4</span></p></td><td class="cl-736943b4"><p class="cl-736938b6"><span class="cl-7367af0a">6</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">258.0</span></p></td><td class="cl-736943bb"><p class="cl-736938b6"><span class="cl-7367af0a">110</span></p></td><td class="cl-736943b3"><p class="cl-736938b6"><span class="cl-7367af0a">3.08</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">3.215</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">19.44</span></p></td><td class="cl-736943bc"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td><td class="cl-736943bd"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943be"><p class="cl-736938b6"><span class="cl-7367af0a">3</span></p></td><td class="cl-736943c4"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-736943a6"><p class="cl-736938b6"><span class="cl-7367af0a">18.7</span></p></td><td class="cl-736943a7"><p class="cl-736938b6"><span class="cl-7367af0a">8</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">360.0</span></p></td><td class="cl-736943a9"><p class="cl-736938b6"><span class="cl-7367af0a">175</span></p></td><td class="cl-736943a6"><p class="cl-736938b6"><span class="cl-7367af0a">3.15</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">3.440</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">17.02</span></p></td><td class="cl-736943aa"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943b0"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943b1"><p class="cl-736938b6"><span class="cl-7367af0a">3</span></p></td><td class="cl-736943b2"><p class="cl-736938b6"><span class="cl-7367af0a">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-736943a6"><p class="cl-736938b6"><span class="cl-7367af0a">18.1</span></p></td><td class="cl-736943a7"><p class="cl-736938b6"><span class="cl-7367af0a">6</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">225.0</span></p></td><td class="cl-736943a9"><p class="cl-736938b6"><span class="cl-7367af0a">105</span></p></td><td class="cl-736943a6"><p class="cl-736938b6"><span class="cl-7367af0a">2.76</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">3.460</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">20.22</span></p></td><td class="cl-736943aa"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td><td class="cl-736943b0"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943b1"><p class="cl-736938b6"><span class="cl-7367af0a">3</span></p></td><td class="cl-736943b2"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-736943a6"><p class="cl-736938b6"><span class="cl-7367af0a">14.3</span></p></td><td class="cl-736943a7"><p class="cl-736938b6"><span class="cl-7367af0a">8</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">360.0</span></p></td><td class="cl-736943a9"><p class="cl-736938b6"><span class="cl-7367af0a">245</span></p></td><td class="cl-736943a6"><p class="cl-736938b6"><span class="cl-7367af0a">3.21</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">3.570</span></p></td><td class="cl-736943a8"><p class="cl-736938b6"><span class="cl-7367af0a">15.84</span></p></td><td class="cl-736943aa"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943b0"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943b1"><p class="cl-736938b6"><span class="cl-7367af0a">3</span></p></td><td class="cl-736943b2"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-736943b3"><p class="cl-736938b6"><span class="cl-7367af0a">24.4</span></p></td><td class="cl-736943b4"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">146.7</span></p></td><td class="cl-736943bb"><p class="cl-736938b6"><span class="cl-7367af0a">62</span></p></td><td class="cl-736943b3"><p class="cl-736938b6"><span class="cl-7367af0a">3.69</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">3.190</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">20.00</span></p></td><td class="cl-736943bc"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td><td class="cl-736943bd"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943be"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td><td class="cl-736943c4"><p class="cl-736938b6"><span class="cl-7367af0a">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-736943b3"><p class="cl-736938b6"><span class="cl-7367af0a">22.8</span></p></td><td class="cl-736943b4"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">140.8</span></p></td><td class="cl-736943bb"><p class="cl-736938b6"><span class="cl-7367af0a">95</span></p></td><td class="cl-736943b3"><p class="cl-736938b6"><span class="cl-7367af0a">3.92</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">3.150</span></p></td><td class="cl-736943ba"><p class="cl-736938b6"><span class="cl-7367af0a">22.90</span></p></td><td class="cl-736943bc"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td><td class="cl-736943bd"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943be"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td><td class="cl-736943c4"><p class="cl-736938b6"><span class="cl-7367af0a">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-736943da"><p class="cl-736938b6"><span class="cl-7367af0a">19.2</span></p></td><td class="cl-736943db"><p class="cl-736938b6"><span class="cl-7367af0a">6</span></p></td><td class="cl-736943dc"><p class="cl-736938b6"><span class="cl-7367af0a">167.6</span></p></td><td class="cl-736943e2"><p class="cl-736938b6"><span class="cl-7367af0a">123</span></p></td><td class="cl-736943da"><p class="cl-736938b6"><span class="cl-7367af0a">3.92</span></p></td><td class="cl-736943dc"><p class="cl-736938b6"><span class="cl-7367af0a">3.440</span></p></td><td class="cl-736943dc"><p class="cl-736938b6"><span class="cl-7367af0a">18.30</span></p></td><td class="cl-736943e3"><p class="cl-736938b6"><span class="cl-7367af0a">1</span></p></td><td class="cl-736943e4"><p class="cl-736938b6"><span class="cl-7367af0a">0</span></p></td><td class="cl-736943e5"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td><td class="cl-736943e6"><p class="cl-736938b6"><span class="cl-7367af0a">4</span></p></td></tr></tbody><tfoot><tr style="overflow-wrap:break-word;"><td colspan="11" class="cl-736943ec"><p class="cl-736938b7"><span class="cl-7367af00">a</span><span class="cl-7367aef6">Here is a footnote about this table</span></p></td></tr><tr style="overflow-wrap:break-word;"><td colspan="11" class="cl-736943ec"><p class="cl-736938b7"><span class="cl-7367af00">b</span><span class="cl-7367aef6">Here is a second footnote.</span></p></td></tr></tfoot></table></div>
 </div>
 </div>
 </div>
-<section id="flextable-quirks" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="flextable-quirks"><span class="header-section-number">5.1.1</span> <code>flextable</code> quirks</h3>
+<section id="flextable-quirks" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="flextable-quirks"><span class="header-section-number">5.2.1</span> <code>flextable</code> quirks</h3>
 <ul>
-<li>Cross-refs broken in Word and PDF. Known issue.</li>
+<li>Table numbers and cross-refs broken in Word. Known issue.</li>
 </ul>
 </section>
 </section>
-<section id="gt" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="gt"><span class="header-section-number">5.2</span> <code>gt</code></h2>
-<p>Here is the {gt} table <a href="#tbl-gt">Table&nbsp;<span>5.3</span></a>. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it’ll get more Quarto support in the long run. But like {kable}, the Word output is not so great, at least not by default.</p>
-<div class="callout-warning callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This code requires the dev version of {gt} &gt; 0.6.0.9000. So you may need to install from GitHub.</p>
-<pre><code>library(remotes)
-install_github("rstudio/gt")</code></pre>
-</div>
-</div>
+<section id="gt" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="gt"><span class="header-section-number">5.3</span> <code>gt</code></h2>
+<p>Here is the {gt} table <a href="#tbl-gt">Table&nbsp;<span>5.3</span></a>. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it’ll get more Quarto support in the long run. But like {kable}, the Word output is not good. In addition, currently table captions are broken in Quarto Word output.</p>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> f1) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> f2) <span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_options</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.font.size =</span> gt<span class="sc">::</span><span class="fu">px</span>(<span class="dv">18</span>), </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.font.names =</span> <span class="st">"Times New Roman"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">data_row.padding =</span> gt<span class="sc">::</span><span class="fu">px</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> f1) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> f2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_options</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.font.size =</span> gt<span class="sc">::</span><span class="fu">px</span>(<span class="dv">18</span>), </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.font.names =</span> <span class="st">"Times New Roman"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">data_row.padding =</span> gt<span class="sc">::</span><span class="fu">px</span>(<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="tbl-gt" class="anchored">
 
-<div id="fmnggwksbe" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="lomwqwguld" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: 'Times New Roman';
 }
 
-#fmnggwksbe .gt_table {
+:where(#lomwqwguld) .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -569,7 +565,7 @@ install_github("rstudio/gt")</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_heading {
+:where(#lomwqwguld) .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -581,7 +577,12 @@ install_github("rstudio/gt")</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_title {
+:where(#lomwqwguld) .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:where(#lomwqwguld) .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -593,7 +594,7 @@ install_github("rstudio/gt")</code></pre>
   border-bottom-width: 0;
 }
 
-#fmnggwksbe .gt_subtitle {
+:where(#lomwqwguld) .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -605,13 +606,13 @@ install_github("rstudio/gt")</code></pre>
   border-top-width: 0;
 }
 
-#fmnggwksbe .gt_bottom_border {
+:where(#lomwqwguld) .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_col_headings {
+:where(#lomwqwguld) .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -626,7 +627,7 @@ install_github("rstudio/gt")</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_col_heading {
+:where(#lomwqwguld) .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -646,7 +647,7 @@ install_github("rstudio/gt")</code></pre>
   overflow-x: hidden;
 }
 
-#fmnggwksbe .gt_column_spanner_outer {
+:where(#lomwqwguld) .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -658,15 +659,15 @@ install_github("rstudio/gt")</code></pre>
   padding-right: 4px;
 }
 
-#fmnggwksbe .gt_column_spanner_outer:first-child {
+:where(#lomwqwguld) .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fmnggwksbe .gt_column_spanner_outer:last-child {
+:where(#lomwqwguld) .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fmnggwksbe .gt_column_spanner {
+:where(#lomwqwguld) .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -678,7 +679,7 @@ install_github("rstudio/gt")</code></pre>
   width: 100%;
 }
 
-#fmnggwksbe .gt_group_heading {
+:where(#lomwqwguld) .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -701,9 +702,10 @@ install_github("rstudio/gt")</code></pre>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#fmnggwksbe .gt_empty_group_heading {
+:where(#lomwqwguld) .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -718,15 +720,15 @@ install_github("rstudio/gt")</code></pre>
   vertical-align: middle;
 }
 
-#fmnggwksbe .gt_from_md > :first-child {
+:where(#lomwqwguld) .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fmnggwksbe .gt_from_md > :last-child {
+:where(#lomwqwguld) .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fmnggwksbe .gt_row {
+:where(#lomwqwguld) .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -745,7 +747,7 @@ install_github("rstudio/gt")</code></pre>
   overflow-x: hidden;
 }
 
-#fmnggwksbe .gt_stub {
+:where(#lomwqwguld) .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -758,7 +760,7 @@ install_github("rstudio/gt")</code></pre>
   padding-right: 5px;
 }
 
-#fmnggwksbe .gt_stub_row_group {
+:where(#lomwqwguld) .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -772,11 +774,15 @@ install_github("rstudio/gt")</code></pre>
   vertical-align: top;
 }
 
-#fmnggwksbe .gt_row_group_first td {
+:where(#lomwqwguld) .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fmnggwksbe .gt_summary_row {
+:where(#lomwqwguld) .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+:where(#lomwqwguld) .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -786,16 +792,16 @@ install_github("rstudio/gt")</code></pre>
   padding-right: 5px;
 }
 
-#fmnggwksbe .gt_first_summary_row {
+:where(#lomwqwguld) .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_first_summary_row.thick {
+:where(#lomwqwguld) .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fmnggwksbe .gt_last_summary_row {
+:where(#lomwqwguld) .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -805,7 +811,7 @@ install_github("rstudio/gt")</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_grand_summary_row {
+:where(#lomwqwguld) .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -815,7 +821,7 @@ install_github("rstudio/gt")</code></pre>
   padding-right: 5px;
 }
 
-#fmnggwksbe .gt_first_grand_summary_row {
+:where(#lomwqwguld) .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -825,11 +831,21 @@ install_github("rstudio/gt")</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_striped {
+:where(#lomwqwguld) .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+:where(#lomwqwguld) .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fmnggwksbe .gt_table_body {
+:where(#lomwqwguld) .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -838,7 +854,7 @@ install_github("rstudio/gt")</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_footnotes {
+:where(#lomwqwguld) .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -852,7 +868,7 @@ install_github("rstudio/gt")</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_footnote {
+:where(#lomwqwguld) .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -861,7 +877,7 @@ install_github("rstudio/gt")</code></pre>
   padding-right: 5px;
 }
 
-#fmnggwksbe .gt_sourcenotes {
+:where(#lomwqwguld) .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -875,7 +891,7 @@ install_github("rstudio/gt")</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#fmnggwksbe .gt_sourcenote {
+:where(#lomwqwguld) .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -883,195 +899,196 @@ install_github("rstudio/gt")</code></pre>
   padding-right: 5px;
 }
 
-#fmnggwksbe .gt_left {
+:where(#lomwqwguld) .gt_left {
   text-align: left;
 }
 
-#fmnggwksbe .gt_center {
+:where(#lomwqwguld) .gt_center {
   text-align: center;
 }
 
-#fmnggwksbe .gt_right {
+:where(#lomwqwguld) .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fmnggwksbe .gt_font_normal {
+:where(#lomwqwguld) .gt_font_normal {
   font-weight: normal;
 }
 
-#fmnggwksbe .gt_font_bold {
+:where(#lomwqwguld) .gt_font_bold {
   font-weight: bold;
 }
 
-#fmnggwksbe .gt_font_italic {
+:where(#lomwqwguld) .gt_font_italic {
   font-style: italic;
 }
 
-#fmnggwksbe .gt_super {
+:where(#lomwqwguld) .gt_super {
   font-size: 65%;
 }
 
-#fmnggwksbe .gt_footnote_marks {
+:where(#lomwqwguld) .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
-#fmnggwksbe .gt_asterisk {
+:where(#lomwqwguld) .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fmnggwksbe .gt_indent_1 {
+:where(#lomwqwguld) .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fmnggwksbe .gt_indent_2 {
+:where(#lomwqwguld) .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fmnggwksbe .gt_indent_3 {
+:where(#lomwqwguld) .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fmnggwksbe .gt_indent_4 {
+:where(#lomwqwguld) .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fmnggwksbe .gt_indent_5 {
+:where(#lomwqwguld) .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
-<table class="gt_table"><caption>Table 5.3:  gt: This should have a number. </caption>
+<table class="gt_table"><caption>Table&nbsp;5.3:  gt: This should have a number that follows the other tables. </caption>
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">mpg</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">cyl</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">disp</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">hp</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">drat</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">wt</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">qsec</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">vs</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">am</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">gear</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">carb</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="mpg">mpg</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="cyl">cyl</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="disp">disp</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="hp">hp</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="drat">drat</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="wt">wt</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="qsec">qsec</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="vs">vs</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="am">am</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="gear">gear</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="carb">carb</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_right">21.0</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">160.0</td>
-<td class="gt_row gt_right">110</td>
-<td class="gt_row gt_right">3.90</td>
-<td class="gt_row gt_right">2.620</td>
-<td class="gt_row gt_right">16.46</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">4</td></tr>
-    <tr><td class="gt_row gt_right">21.0</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">160.0</td>
-<td class="gt_row gt_right">110</td>
-<td class="gt_row gt_right">3.90</td>
-<td class="gt_row gt_right">2.875</td>
-<td class="gt_row gt_right">17.02</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">4</td></tr>
-    <tr><td class="gt_row gt_right">22.8</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">108.0</td>
-<td class="gt_row gt_right">93</td>
-<td class="gt_row gt_right">3.85</td>
-<td class="gt_row gt_right">2.320</td>
-<td class="gt_row gt_right">18.61</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">1</td></tr>
-    <tr><td class="gt_row gt_right">21.4</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">258.0</td>
-<td class="gt_row gt_right">110</td>
-<td class="gt_row gt_right">3.08</td>
-<td class="gt_row gt_right">3.215</td>
-<td class="gt_row gt_right">19.44</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">1</td></tr>
-    <tr><td class="gt_row gt_right">18.7</td>
-<td class="gt_row gt_right">8</td>
-<td class="gt_row gt_right">360.0</td>
-<td class="gt_row gt_right">175</td>
-<td class="gt_row gt_right">3.15</td>
-<td class="gt_row gt_right">3.440</td>
-<td class="gt_row gt_right">17.02</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">2</td></tr>
-    <tr><td class="gt_row gt_right">18.1</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">225.0</td>
-<td class="gt_row gt_right">105</td>
-<td class="gt_row gt_right">2.76</td>
-<td class="gt_row gt_right">3.460</td>
-<td class="gt_row gt_right">20.22</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">1</td></tr>
-    <tr><td class="gt_row gt_right">14.3</td>
-<td class="gt_row gt_right">8</td>
-<td class="gt_row gt_right">360.0</td>
-<td class="gt_row gt_right">245</td>
-<td class="gt_row gt_right">3.21</td>
-<td class="gt_row gt_right">3.570</td>
-<td class="gt_row gt_right">15.84</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">3</td>
-<td class="gt_row gt_right">4</td></tr>
-    <tr><td class="gt_row gt_right">24.4</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">146.7</td>
-<td class="gt_row gt_right">62</td>
-<td class="gt_row gt_right">3.69</td>
-<td class="gt_row gt_right">3.190</td>
-<td class="gt_row gt_right">20.00</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">2</td></tr>
-    <tr><td class="gt_row gt_right">22.8</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">140.8</td>
-<td class="gt_row gt_right">95</td>
-<td class="gt_row gt_right">3.92</td>
-<td class="gt_row gt_right">3.150</td>
-<td class="gt_row gt_right">22.90</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">2</td></tr>
-    <tr><td class="gt_row gt_right">19.2</td>
-<td class="gt_row gt_right">6</td>
-<td class="gt_row gt_right">167.6</td>
-<td class="gt_row gt_right">123</td>
-<td class="gt_row gt_right">3.92</td>
-<td class="gt_row gt_right">3.440</td>
-<td class="gt_row gt_right">18.30</td>
-<td class="gt_row gt_right">1</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_right">4</td>
-<td class="gt_row gt_right">4</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">21.0</td>
+<td headers="cyl" class="gt_row gt_right">6</td>
+<td headers="disp" class="gt_row gt_right">160.0</td>
+<td headers="hp" class="gt_row gt_right">110</td>
+<td headers="drat" class="gt_row gt_right">3.90</td>
+<td headers="wt" class="gt_row gt_right">2.620</td>
+<td headers="qsec" class="gt_row gt_right">16.46</td>
+<td headers="vs" class="gt_row gt_right">0</td>
+<td headers="am" class="gt_row gt_right">1</td>
+<td headers="gear" class="gt_row gt_right">4</td>
+<td headers="carb" class="gt_row gt_right">4</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">21.0</td>
+<td headers="cyl" class="gt_row gt_right">6</td>
+<td headers="disp" class="gt_row gt_right">160.0</td>
+<td headers="hp" class="gt_row gt_right">110</td>
+<td headers="drat" class="gt_row gt_right">3.90</td>
+<td headers="wt" class="gt_row gt_right">2.875</td>
+<td headers="qsec" class="gt_row gt_right">17.02</td>
+<td headers="vs" class="gt_row gt_right">0</td>
+<td headers="am" class="gt_row gt_right">1</td>
+<td headers="gear" class="gt_row gt_right">4</td>
+<td headers="carb" class="gt_row gt_right">4</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">22.8</td>
+<td headers="cyl" class="gt_row gt_right">4</td>
+<td headers="disp" class="gt_row gt_right">108.0</td>
+<td headers="hp" class="gt_row gt_right">93</td>
+<td headers="drat" class="gt_row gt_right">3.85</td>
+<td headers="wt" class="gt_row gt_right">2.320</td>
+<td headers="qsec" class="gt_row gt_right">18.61</td>
+<td headers="vs" class="gt_row gt_right">1</td>
+<td headers="am" class="gt_row gt_right">1</td>
+<td headers="gear" class="gt_row gt_right">4</td>
+<td headers="carb" class="gt_row gt_right">1</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">21.4</td>
+<td headers="cyl" class="gt_row gt_right">6</td>
+<td headers="disp" class="gt_row gt_right">258.0</td>
+<td headers="hp" class="gt_row gt_right">110</td>
+<td headers="drat" class="gt_row gt_right">3.08</td>
+<td headers="wt" class="gt_row gt_right">3.215</td>
+<td headers="qsec" class="gt_row gt_right">19.44</td>
+<td headers="vs" class="gt_row gt_right">1</td>
+<td headers="am" class="gt_row gt_right">0</td>
+<td headers="gear" class="gt_row gt_right">3</td>
+<td headers="carb" class="gt_row gt_right">1</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">18.7</td>
+<td headers="cyl" class="gt_row gt_right">8</td>
+<td headers="disp" class="gt_row gt_right">360.0</td>
+<td headers="hp" class="gt_row gt_right">175</td>
+<td headers="drat" class="gt_row gt_right">3.15</td>
+<td headers="wt" class="gt_row gt_right">3.440</td>
+<td headers="qsec" class="gt_row gt_right">17.02</td>
+<td headers="vs" class="gt_row gt_right">0</td>
+<td headers="am" class="gt_row gt_right">0</td>
+<td headers="gear" class="gt_row gt_right">3</td>
+<td headers="carb" class="gt_row gt_right">2</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">18.1</td>
+<td headers="cyl" class="gt_row gt_right">6</td>
+<td headers="disp" class="gt_row gt_right">225.0</td>
+<td headers="hp" class="gt_row gt_right">105</td>
+<td headers="drat" class="gt_row gt_right">2.76</td>
+<td headers="wt" class="gt_row gt_right">3.460</td>
+<td headers="qsec" class="gt_row gt_right">20.22</td>
+<td headers="vs" class="gt_row gt_right">1</td>
+<td headers="am" class="gt_row gt_right">0</td>
+<td headers="gear" class="gt_row gt_right">3</td>
+<td headers="carb" class="gt_row gt_right">1</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">14.3</td>
+<td headers="cyl" class="gt_row gt_right">8</td>
+<td headers="disp" class="gt_row gt_right">360.0</td>
+<td headers="hp" class="gt_row gt_right">245</td>
+<td headers="drat" class="gt_row gt_right">3.21</td>
+<td headers="wt" class="gt_row gt_right">3.570</td>
+<td headers="qsec" class="gt_row gt_right">15.84</td>
+<td headers="vs" class="gt_row gt_right">0</td>
+<td headers="am" class="gt_row gt_right">0</td>
+<td headers="gear" class="gt_row gt_right">3</td>
+<td headers="carb" class="gt_row gt_right">4</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">24.4</td>
+<td headers="cyl" class="gt_row gt_right">4</td>
+<td headers="disp" class="gt_row gt_right">146.7</td>
+<td headers="hp" class="gt_row gt_right">62</td>
+<td headers="drat" class="gt_row gt_right">3.69</td>
+<td headers="wt" class="gt_row gt_right">3.190</td>
+<td headers="qsec" class="gt_row gt_right">20.00</td>
+<td headers="vs" class="gt_row gt_right">1</td>
+<td headers="am" class="gt_row gt_right">0</td>
+<td headers="gear" class="gt_row gt_right">4</td>
+<td headers="carb" class="gt_row gt_right">2</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">22.8</td>
+<td headers="cyl" class="gt_row gt_right">4</td>
+<td headers="disp" class="gt_row gt_right">140.8</td>
+<td headers="hp" class="gt_row gt_right">95</td>
+<td headers="drat" class="gt_row gt_right">3.92</td>
+<td headers="wt" class="gt_row gt_right">3.150</td>
+<td headers="qsec" class="gt_row gt_right">22.90</td>
+<td headers="vs" class="gt_row gt_right">1</td>
+<td headers="am" class="gt_row gt_right">0</td>
+<td headers="gear" class="gt_row gt_right">4</td>
+<td headers="carb" class="gt_row gt_right">2</td></tr>
+    <tr><td headers="mpg" class="gt_row gt_right">19.2</td>
+<td headers="cyl" class="gt_row gt_right">6</td>
+<td headers="disp" class="gt_row gt_right">167.6</td>
+<td headers="hp" class="gt_row gt_right">123</td>
+<td headers="drat" class="gt_row gt_right">3.92</td>
+<td headers="wt" class="gt_row gt_right">3.440</td>
+<td headers="qsec" class="gt_row gt_right">18.30</td>
+<td headers="vs" class="gt_row gt_right">1</td>
+<td headers="am" class="gt_row gt_right">0</td>
+<td headers="gear" class="gt_row gt_right">4</td>
+<td headers="carb" class="gt_row gt_right">4</td></tr>
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
@@ -1087,11 +1104,12 @@ install_github("rstudio/gt")</code></pre>
 </div>
 </div>
 </div>
-<section id="gt-quirks" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="gt-quirks"><span class="header-section-number">5.2.1</span> <code>gt</code> quirks</h3>
+<section id="gt-quirks" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="gt-quirks"><span class="header-section-number">5.3.1</span> <code>gt</code> quirks</h3>
 <ul>
 <li>I couldn’t get {gt} to respect my font request for HTML unlike for {flextable}</li>
 <li>The footnotes look bad in Word. But I don’t know {gt} so probably my error.</li>
+<li>Table captions and numbers broken in Word.</li>
 </ul>
 
 
@@ -1142,7 +1160,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1221,31 +1256,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
@@ -1262,103 +1316,101 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">always_allow_html:</span><span class="co"> true</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, echo=FALSE, message=FALSE}</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"tables"</span>, <span class="st">"_common.R"</span>))</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Kable vs Flex vs qt {#sec-kableflexgt}</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>Here I compare a three different ways to make tables.</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>tbl_cap <span class="ot">&lt;-</span> <span class="st">"This should have a number."</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> (mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,])</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="st">"Here is a footnote about this table"</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="st">"Here is a second footnote."</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-kable</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: !expr paste("kable:", tbl_cap)</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co"># note hold_position not working in Quarto v1.0.38.</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(dt, <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"scale_down"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">footnote</span>(<span class="at">symbol =</span> <span class="fu">c</span>(f1, f2))</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="fu">### `kable` quirks</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Make sure to put <span class="in">`always_allow_html: true`</span> in the yaml at the top of your Rmd or qmd file if outputting to Word. I can't figure out how to put it in the <span class="sc">\`</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Word output is often not good looking. This is a known issue with <span class="in">`kable`</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Do not pass in caption to <span class="in">`kbl()`</span> if you want to use Quarto's cross-reference engine.</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`kbl(..., format="pandoc")`</span> can help for Word if your templates stop working but destroys the PDF output.</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## `flextable`</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>Here is the {flextable} table @tbl-flex. {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.0.38 cross-reference and table captioning for Word and PDF is completely broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-flex</span></span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: !expr paste("flextable:", tbl_cap)</span></span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">footnote</span>(<span class="at">i =</span> <span class="dv">1</span>, <span class="at">j =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>            <span class="at">value =</span> <span class="fu">as_paragraph</span>(<span class="fu">c</span>(f1, f2)),</span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>            <span class="at">ref_symbols =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>),</span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>            <span class="at">part =</span> <span class="st">"header"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">font</span>(<span class="at">fontname=</span><span class="st">"Times New Roman"</span>, <span class="at">part=</span><span class="st">"all"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fontsize</span>(<span class="at">size=</span><span class="dv">12</span>)</span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="fu">### `flextable` quirks</span></span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Cross-refs broken in Word and PDF. Known issue.</span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="fu">## `gt`</span></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>Here is the {gt} table @tbl-gt. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it'll get more Quarto support in the long run. But like {kable}, the Word output is not so great, at least not by default.</span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>::: callout-warning</span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>This code requires the dev version of {gt} &gt; 0.6.0.9000. So you may need to install from GitHub.</span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="in">library(remotes)</span></span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="in">install_github("rstudio/gt")</span></span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-gt</span></span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: !expr paste("gt:", tbl_cap)</span></span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span></span>
-<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> f1) <span class="sc">%&gt;%</span></span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> f2) <span class="sc">%&gt;%</span></span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_options</span>(</span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.font.size =</span> gt<span class="sc">::</span><span class="fu">px</span>(<span class="dv">18</span>), </span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.font.names =</span> <span class="st">"Times New Roman"</span>,</span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>      <span class="at">data_row.padding =</span> gt<span class="sc">::</span><span class="fu">px</span>(<span class="dv">1</span>))</span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a><span class="fu">### `gt` quirks</span></span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>I couldn't get {gt} to respect my font request for HTML unlike for {flextable}</span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The footnotes look bad in Word. But I don't know {gt} so probably my error.</span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a><span class="in">```{=openxml}</span></span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type="page"/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span></span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">always_allow_html:</span><span class="co"> true</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r warning=FALSE, echo=FALSE, message=FALSE}</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"tables"</span>, <span class="st">"_common.R"</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># Kable vs Flex vs qt {#sec-kableflexgt}</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>Here I compare a three different ways to make tables. Unfortunately the table numbers and cross-references are still not working as of Quarto version 1.2.335 (Feb 2023), but the developers are aware and a major revamp of cross-referencing is in the works to fix these problems.</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>tbl_cap <span class="ot">&lt;-</span> <span class="st">"This should have a number that follows the other tables."</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> (mtcars[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,])</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="st">"Here is a footnote about this table"</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="st">"Here is a second footnote."</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Kable</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>Here is the {kable} table @tbl-kable. Word output is often not good looking. This is a known issue with <span class="in">`kable`</span>.</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-kable</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: !expr paste("kable:", tbl_cap)</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co"># note hold_position not working in Quarto v1.0.38.</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(dt, <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"scale_down"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">footnote</span>(<span class="at">symbol =</span> <span class="fu">c</span>(f1, f2))</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### `kable` quirks</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Make sure to put <span class="in">`always_allow_html: true`</span> in the yaml at the top of your Rmd or qmd file if outputting to Word. I can't figure out how to put it in the <span class="sc">\`</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Word output is often not good looking. This is a known issue with <span class="in">`kable`</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Do not pass in caption to <span class="in">`kbl()`</span> if you want to use Quarto's cross-reference engine.</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`kbl(..., format="pandoc")`</span> can help for Word if your templates stop working but destroys the PDF output.</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## `flextable`</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>Here is the {flextable} table @tbl-flex. {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.2.335 cross-reference and table numbers for Word  is broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-flex</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: !expr paste("flextable:", tbl_cap)</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">flextable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>  flextable<span class="sc">::</span><span class="fu">footnote</span>(<span class="at">i =</span> <span class="dv">1</span>, <span class="at">j =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>            <span class="at">value =</span> <span class="fu">as_paragraph</span>(<span class="fu">c</span>(f1, f2)),</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>            <span class="at">ref_symbols =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>),</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>            <span class="at">part =</span> <span class="st">"header"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">font</span>(<span class="at">fontname=</span><span class="st">"Times New Roman"</span>, <span class="at">part=</span><span class="st">"all"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fontsize</span>(<span class="at">size=</span><span class="dv">12</span>)</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="fu">### `flextable` quirks</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Table numbers and cross-refs broken in Word. Known issue.</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## `gt`</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>Here is the {gt} table @tbl-gt. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it'll get more Quarto support in the long run. But like {kable}, the Word output is not good. In addition, currently table captions are broken in Quarto Word output.</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-gt</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: !expr paste("gt:", tbl_cap)</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>dt <span class="sc">%&gt;%</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> f1) <span class="sc">%&gt;%</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> f2) <span class="sc">%&gt;%</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">tab_options</span>(</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.font.size =</span> gt<span class="sc">::</span><span class="fu">px</span>(<span class="dv">18</span>), </span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>      <span class="at">table.font.names =</span> <span class="st">"Times New Roman"</span>,</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">data_row.padding =</span> gt<span class="sc">::</span><span class="fu">px</span>(<span class="dv">1</span>))</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="fu">### `gt` quirks</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>I couldn't get {gt} to respect my font request for HTML unlike for {flextable}</span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The footnotes look bad in Word. But I don't know {gt} so probably my error.</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Table captions and numbers broken in Word.</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{=openxml}</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;w:p&gt;&lt;w:r&gt;&lt;w:br w:type="page"/&gt;&lt;/w:r&gt;&lt;/w:p&gt;</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
