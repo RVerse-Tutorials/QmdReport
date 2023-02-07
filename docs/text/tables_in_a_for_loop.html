@@ -429,7 +429,7 @@ Mazda RX4 Wag
 <h2 data-number="4.2" class="anchored" data-anchor-id="getting-the-cross-reference-links"><span class="header-section-number">4.2</span> Getting the cross-reference links</h2>
 <p>We have to use a bit of magic to get our dynamic table numbers and links using Quarto’s cross-referencing. The trick is to use a child Rmd (or qmd) in a for loop. This trick can be used for figures too but I’ll just show it here with tables. This code inspired from <a href="https://gist.github.com/rmoff/a043676a2f084b81a434">this gist</a>.</p>
 <p>We use <code>knit_expand()</code> and make a child Rmd that uses double curly braces like <code>{{value.to.match}}</code> in the code. That way the value at the time this Rmd was embedded can be referenced. Note that if <code>value.to.match</code> were a string (which it is not in this example), we would need to add quotes around <code>{{value.to.match}}</code> in our code.</p>
-<p>With this approach we get our numbered tables and we can reference the tables usual such as <a href="#tbl-cyl8">Table&nbsp;<span>4.2</span></a>. Click on the Code link at top (HTML output) to see how it’s done.</p>
+<p>With this approach we get our numbered tables and we can reference the tables usual such as <a href="#tbl-cyl8">Table&nbsp;<span>4.2</span></a> (note this is broken in Word output). Click on the Code link at top (HTML output) to see how it’s done.</p>
 <div class="cell">
 
 </div>
@@ -774,7 +774,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>We use <span class="in">`knit_expand()`</span> and make a child Rmd that uses double curly braces like <span class="in">`{{value.to.match}}`</span> in the code. That way the value at the time this Rmd was embedded can be referenced. Note that if <span class="in">`value.to.match`</span> were a string (which it is not in this example), we would need to add quotes around <span class="in">`{{value.to.match}}`</span> in our code.</span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>With this approach we get our numbered tables and we can reference the tables usual such as @tbl-cyl8. Click on the Code link at top (HTML output) to see how it's done.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>With this approach we get our numbered tables and we can reference the tables usual such as @tbl-cyl8 (note this is broken in Word output). Click on the Code link at top (HTML output) to see how it's done.</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{r include=FALSE}</span></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>

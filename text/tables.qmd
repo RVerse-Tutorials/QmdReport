@@ -18,7 +18,7 @@ In this chapter, I am going to use {flextable} for Word and HTML and {kabelExtra
 
 ## Example table
 
-This is an example a table. We can reference @tbl-example easily and it is auto-numbered. 
+This is an example a table. We can reference @tbl-example (note this is broken in Word output) easily and it is auto-numbered. 
 
 ```{r}
 #| label: tbl-example
@@ -43,7 +43,7 @@ It is often good to have your files in separate files so that when you edit your
 
 ## Cross-references
 
-In Quarto, [table links](https://quarto.org/docs/authoring/cross-references.html#tables) use the table label `@tbl-tablabel` where `tablabel` is the label you put on the table chunk. In the text it looks like this @tbl-tablabel. The chunk yaml looks like this
+In Quarto, [table links](https://quarto.org/docs/authoring/cross-references.html#tables) use the table label `@tbl-tablabel` where `tablabel` is the label you put on the table chunk. In the text it looks like this @tbl-tablabel (note this is broken in Word output). The chunk yaml looks like this
 
 ```
 #| label: tbl-tablabel

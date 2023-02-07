@@ -43,7 +43,7 @@ kbl(dt, booktabs = TRUE) %>%
 
 ## `flextable`
 
-Here is the {flextable} table @tbl-flex. {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.2.335 cross-reference and table numbers for Word  is broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.
+Here is the {flextable} table @tbl-flex (note this is broken in Word output). {flextable} gives you a lot more control over your tables with a grammar format (like ggplot2). It also gives nice output to Word, PDF and HTML. Sadly in Quarto v1.2.335 cross-reference and table numbers for Word  is broken, but the developers know about this. The {officer} package, which I think Quarto is leaning on for Word generation, use {flextable} so I am hoping that {flextable} gets moved into the RStudio suite.
 
 ```{r}
 #| label: tbl-flex
@@ -67,7 +67,7 @@ dt %>%
 
 ## `gt`
 
-Here is the {gt} table @tbl-gt. {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it'll get more Quarto support in the long run. But like {kable}, the Word output is not good. In addition, currently table captions are broken in Quarto Word output.
+Here is the {gt} table @tbl-gt (note this is broken in Word output). {gt} has many of the same features as {flextable} and is in the RStudio suite so maybe it'll get more Quarto support in the long run. But like {kable}, the Word output is not good. In addition, currently table captions are broken in Quarto Word output.
 
 
 ```{r}

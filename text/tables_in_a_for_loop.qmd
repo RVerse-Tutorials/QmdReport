@@ -36,7 +36,7 @@ We have to use a bit of magic to get our dynamic table numbers and links using Q
 
 We use `knit_expand()` and make a child Rmd that uses double curly braces like `{{value.to.match}}` in the code. That way the value at the time this Rmd was embedded can be referenced. Note that if `value.to.match` were a string (which it is not in this example), we would need to add quotes around `{{value.to.match}}` in our code.
 
-With this approach we get our numbered tables and we can reference the tables usual such as @tbl-cyl8. Click on the Code link at top (HTML output) to see how it's done.
+With this approach we get our numbered tables and we can reference the tables usual such as @tbl-cyl8 (note this is broken in Word output). Click on the Code link at top (HTML output) to see how it's done.
 
 ```{r include=FALSE}
 #| echo: true
