@@ -287,7 +287,7 @@ figures}}\\[4\baselineskip] % Subtitle or further description
 		{\noindent The Publisher~~\plogo}\\[\baselineskip] % Publisher and logo
 	}
 
-\end{frontmatter}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, sharp corners, enhanced, frame hidden, interior hidden]}{\end{tcolorbox}}\fi
+\end{frontmatter}\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, borderline west={3pt}{0pt}{shadecolor}, sharp corners, frame hidden, breakable, boxrule=0pt, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -299,11 +299,120 @@ figures}}\\[4\baselineskip] % Subtitle or further description
 \mainmatter
 \bookmarksetup{startatroot}
 
-\hypertarget{citation}{%
-\chapter*{Citation}\label{citation}}
-\addcontentsline{toc}{chapter}{Citation}
+\hypertarget{open-issues}{%
+\chapter{Open Issues}\label{open-issues}}
 
-\markboth{Citation}{Citation}
+\hypertarget{april-26-2023-update}{%
+\section{April 26, 2023 update}\label{april-26-2023-update}}
+
+\begin{itemize}
+\tightlist
+\item
+  Everything broken in the Aug 13, 2022 update is still broken.
+\item
+  flextable cross-refs and captions are still not working in Word output
+\item
+  The flextable 0.9.1 CRAN release broke PDF output in Quarto books.
+  Known problem and fixed in the development version on GitHub (0.9.2)
+  \texttt{devtools::install\_github("davidgohel/flextable")}
+\item
+  gt (v0.9.0) cross-refs still broken in Word
+\end{itemize}
+
+\hypertarget{aug-13-2022-update}{%
+\section{Aug 13, 2022 update}\label{aug-13-2022-update}}
+
+I have mostly figured out workarounds for the table package issues. The
+remaining big issues are
+
+\begin{itemize}
+\tightlist
+\item
+  For HTML, if you have two chapters (h1 level) in a single qmd it
+  totally messes up the TOC. Word and PDF converters seem to figure it
+  out ok and number things correctly.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    I posted an issue
+    https://github.com/quarto-dev/quarto-cli/issues/1712
+  \item
+    This is important because we often don't know how many appendix
+    chapters we will need. These are dynamically created based on the
+    data. There is no good way to know this ahead of time. These report
+    templates are used across very different regions and each region has
+    a different number of appendices based on the number of, say,
+    species or cities or whatever, in the region.
+  \end{itemize}
+\item
+  When I have appendices so \texttt{appendices:} in my YAML, the HTML
+  TOC is messed up.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    see https://rverse-tutorials.github.io/QmdReport/ and look at TOC
+  \item
+    why doesn't the HTML figure out that the appendix A title is
+    CRchum.csv?? Word and PDF figure that out.
+  \end{itemize}
+\item
+  When I have \texttt{appendices:}, the PDF TOC and levels look right,
+  but if I click on ``Appendices'' in the TOC, I go to References.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Look here to see what I mean
+    \href{https://rverse-tutorials.github.io/QmdReport/A-Quarto-Template-Repo-to-Create-Big-Reports-and-Very-Long-Title-Because-Long-Titles-are-Common.pdf}{PDF
+    version}
+  \item
+    I would like to be able to have a \texttt{appendices.qmd} that I
+    would go to. Maybe I can. I haven't tried.
+  \end{itemize}
+\item
+  No merge and knit option. :( so no memory across chapters. That is a
+  ``feature'' in many cases but some report writers use memory across
+  chapters heavily.
+\end{itemize}
+
+\hypertarget{aug-11-2022-update}{%
+\section{Aug 11, 2022 update}\label{aug-11-2022-update}}
+
+\begin{itemize}
+\tightlist
+\item
+  flextable cross-refs don't work in pdf but kableExtra tables work and
+  look better in some ways. So I use kableExtra for pdf's.
+\item
+  flextable is best for Word but cross-refs are broken. The Quarto dev
+  team knows about the problem.
+\item
+  The Quarto \{\{include filename\}\} option for including files seems
+  very limited or I don't know how to use it (most definitely true). The
+  file has to be in same folder as the qmd that calls it.
+\item
+  The Quarto \{\{include filename\}\} breaks if the thing you call is
+  calling \texttt{knit\_expand()}. Why? So weird. I might be doing
+  something wrong.
+\item
+  No merge and knit option. :( no sharing of variables across chapters
+\item
+  Can't have two chapters (h1 level) in a single qmd so can't
+  dynamically create chapters (one qmd with many h1 levels where that
+  qmd is created dynamically)
+\item
+  \{gt\} package and PDF table numbering don't mix! Breaks all numbering
+  after a single \texttt{gt()} call. \emph{Update. Fixed in the new gt
+  update}
+\end{itemize}
+
+\hypertarget{citation}{%
+\section*{Citation}\label{citation}}
+\addcontentsline{toc}{section}{Citation}
+
+\markright{Citation}
 
 EE Holmes, 2022. Quarto Report Template. Northwest Fisheries Science
 Center.
@@ -763,16 +872,16 @@ output). The chunk yaml looks like this
 \toprule
 Year & Jan & Feb & Mar & Apr & May & Jun & Jul & Aug & Sep & Oct & Nov & Dec\\
 \midrule
-1954 & NA & NA & NA & NA & NA & NA & 1 & 1 & 2 & 3 & 2 & 1\\
-1955 & 3 & 3 & 3 & 4 & 5 & 6 & 6 & 7 & 9 & 9 & 10 & 9\\
-1956 & 10 & 10 & 10 & 12 & 14 & 14 & 16 & 16 & 17 & 17 & 19 & 20\\
-1957 & 22 & 24 & 24 & 27 & 26 & 28 & 30 & 32 & 32 & 34 & 35 & 37\\
-1958 & 37 & 37 & 37 & 36 & 36 & 39 & 41 & 42 & 41 & 43 & 46 & 47\\
+1954 & NA & NA & NA & NA & NA & NA & 0 & 2 & 4 & 5 & 4 & 4\\
+1955 & 6 & 8 & 11 & 13 & 14 & 16 & 17 & 18 & 18 & 18 & 20 & 21\\
+1956 & 23 & 24 & 25 & 27 & 29 & 29 & 29 & 31 & 32 & 32 & 34 & 37\\
+1957 & 39 & 39 & 40 & 40 & 43 & 44 & 45 & 44 & 46 & 48 & 49 & 51\\
+1958 & 52 & 54 & 55 & 57 & 57 & 58 & 59 & 59 & 60 & 59 & 60 & 62\\
 \addlinespace
-1959 & 48 & 49 & 52 & 53 & 53 & 55 & 56 & 58 & 60 & 60 & 61 & 63\\
-1960 & 66 & 67 & 67 & 68 & 70 & 70 & 72 & 73 & 75 & 75 & 76 & 77\\
-1961 & 79 & 78 & 78 & 80 & 81 & 83 & 83 & 86 & 87 & 88 & 88 & 90\\
-1962 & 89 & 88 & 87 & 88 & 90 & 91 & 93 & 94 & 95 & 97 & NA & NA\\
+1959 & 63 & 64 & 65 & 66 & 67 & 67 & 67 & 68 & 69 & 68 & 69 & 70\\
+1960 & 71 & 74 & 74 & 74 & 75 & 76 & 76 & 75 & 76 & 78 & 78 & 79\\
+1961 & 80 & 80 & 82 & 85 & 85 & 87 & 87 & 89 & 89 & 91 & 95 & 95\\
+1962 & 98 & 97 & 98 & 98 & 100 & 101 & 102 & 105 & 104 & 105 & NA & NA\\
 \bottomrule
 \multicolumn{13}{l}{\rule{0pt}{1em}\textit{Note: }}\\
 \multicolumn{13}{l}{\rule{0pt}{1em}kable}\\
