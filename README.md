@@ -2,7 +2,14 @@
 
 [A demo a Quarto report live view](https://rverse-tutorials.github.io/QmdReport/)
 
-## Aug 13 22 update
+## April 26, 2023 update
+
+* Everything broken in the Aug 13, 2022 update is still broken.
+* flextable cross-refs and captions are still not working in Word output
+* The flextable 0.9.1 CRAN release broke PDF output in Quarto books. Known problem and fixed in the development version on GitHub (0.9.2) `devtools::install_github("davidgohel/flextable")`
+* gt (v0.9.0) cross-refs still broken in Word
+
+## Aug 13, 2022 update
 
 I have mostly figured out workarounds for the table package issues.
 
